@@ -1,4 +1,5 @@
-const { override, fixBabelImports, addLessLoader } = require('customize-cra');
+const { override, fixBabelImports } = require('customize-cra')
+const addLessLoader = require('customize-cra-less-loader')
 
 module.exports = override(
   // Load antd
@@ -10,9 +11,11 @@ module.exports = override(
   // Add `javascriptEnabled` and antd theme configuration
   // to the Less loader
   addLessLoader({
-    lessOptions: {
-      javascriptEnabled: true,
-      modifyVars: { '@primary-color': '#1DA57A' },
-    }
+    lessLoaderOptions: {
+      lessOptions: {
+        javascriptEnabled: true,
+        modifyVars: { '@primary-color': '#1DA57A' },
+      },
+    },
   }),
-);
+)
